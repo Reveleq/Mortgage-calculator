@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="/assets/fonts/PlusJakartaSans-VariableFont_wght.ttf"
+    />
+    <link
+      rel="stylesheet"
+      href="/assets/fonts/PlusJakartaSans-VariableFont_wght.ttf"
+    />
+    <link
+      rel="stylesheet"
+      href="/assets/fonts/static/PlusJakartaSans-Bold.ttf"
+    />
+    <link
+      rel="stylesheet"
+      href="/assets/fonts/static/PlusJakartaSans-Medium.ttf"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./dist/img/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="/dist/css/style.min.css" />
+    <title>Frontend Mentor | Mortgage repayment calculator</title>
+  </head>
+  <body class="body">
+    <div class="calculator">
+      <div class="calculator__box">
+        <div class="calculator__left">
+          <div class="calculator__left-box">
+            <form class="calculator__left-form">
+              <div class="calculator__left-form-up">
+                <h1 class="calculator__left-title">Mortagage Calculator</h1>
+                <button class="calculator__left-btn">Clear All</button>
+              </div>
+              <div class="calculator__left-form-box">
+                <p class="calculator__left-form-title">Mortagage Amount</p>
+                <div class="calculator__left-form-field">
+                  <label class="calculator__left-form-label" for="amount"
+                    >$</label
+                  >
+                  <input
+                    class="calculator__left-form-input"
+                    type="number"
+                    id="amount"
+                    min="1000"
+                  />
+                </div>
+                <p class="calculator__left-form-error error-amount">
+                  This field is required
+                </p>
+              </div>
+              <div class="calculator__left-form-cards">
+                <div class="calculator__left-form-box">
+                  <p class="calculator__left-form-title">Mortagage Team</p>
+                  <div class="calculator__left-form-field">
+                    <input
+                      class="calculator__left-form-input"
+                      type="number"
+                      id="team"
+                      min="1"
+                    />
+                    <label class="calculator__left-form-label" for="team"
+                      >years</label
+                    >
+                  </div>
+
+                  <p class="calculator__left-form-error error-team">
+                    This field is required
+                  </p>
+                </div>
+
+                <div class="calculator__left-form-box">
+                  <p class="calculator__left-form-title">Mortagage Rate</p>
+                  <div class="calculator__left-form-field">
+                    <input
+                      class="calculator__left-form-input"
+                      type="number"
+                      id="rate"
+                      min="1"
+                    />
+                    <label class="calculator__left-form-label" for="rate"
+                      >%</label
+                    >
+                  </div>
+
+                  <p class="calculator__left-form-error error-rate">
+                    This field is required
+                  </p>
+                </div>
+              </div>
+              <div class="calculator__left-form-box">
+                <p class="calculator__left-form-title">Mortagage Type</p>
+                <div class="calculator__left-form-radio-field">
+                  <input
+                    class="calculator__left-form-radio-input"
+                    type="radio"
+                    id="repayment"
+                    name="type"
+                    value="repayment"
+                  />
+                  <label
+                    class="calculator__left-form-radio-label"
+                    for="repayment"
+                    >Repayment
+                  </label>
+                </div>
+                <div class="calculator__left-form-radio-field">
+                  <input
+                    class="calculator__left-form-radio-input"
+                    type="radio"
+                    id="interest"
+                    name="type"
+                    value="interest"
+                  />
+                  <label
+                    class="calculator__left-form-radio-label"
+                    for="interest"
+                    >Interest Only</label
+                  >
+                </div>
+                <p class="calculator__left-form-error error-type">
+                  This field is required
+                </p>
+              </div>
+              <button class="calculator__left-submit">
+                <img
+                  class="calculator__left-submit-img"
+                  src="/dist/img/icon-calculator.svg"
+                  alt="ikonka kalkulatora"
+                />
+                Calculate Repayments
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="calculator__right">
+          <div class="calculator__right-common-box">
+            <img
+              class="calculator__right-common-img"
+              src="/dist/img/illustration-empty.svg"
+              alt="ilustracja przedstawia rachunki inwestycyjne na kartce papieru"
+            />
+
+            <h2 class="calculator__right-common-title">Results shown here</h2>
+            <p class="calculator__right-common-text">
+              Complete the form and click "calculate repayments" to see what
+              your monthly reapyments would be.
+            </p>
+          </div>
+          <div class="calculator__right-result-box">
+            <h2 class="calculator__right-result-title">Your Results</h2>
+            <p class="calculator__right-result-text">
+              Your results are shown below based on the inforamtion you
+              provided. To adjust the results, edit the form and click
+              "calculate repayments" again
+            </p>
+            <div class="calculator__right-cards">
+              <div class="calculator__right-card">
+                <p class="calculator__right-card-text">
+                  Your monthly repayments
+                </p>
+                <p class="calculator__right-card-repayments">NAN</p>
+              </div>
+              <div class="calculator__right-card">
+                <p class="calculator__right-card-text">
+                  Total you'll repay over the term
+                </p>
+                <p class="calculator__right-card-repay">NAN</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/dist/js/index.min.js"></script>
+  </body>
+</html>
