@@ -27,12 +27,12 @@ const formula = () => {
   let typeData = "";
   let monthlyPayment = 0;
   let totalRepayment = 0;
-  const amountData = Number(amount.value);
-  const termData = Number(team.value) * 12;
-  const rateData = Number(rate.value) / 12;
-  console.log(amountData);
-  console.log(termData);
-  console.log(rateData);
+  const amountData = parseFloat(amount.value);
+  const termData = parseInt(team.value);
+  const rateData = parseFloat(rate.value) / 100;
+  console.log(amount.value, amountData);
+  console.log(team.value, termData);
+  console.log(rate.value, rateData);
   if (repayment.checked) {
     const repayment_ = repayment.value;
     typeData = repayment_;
@@ -40,18 +40,26 @@ const formula = () => {
     const interest_ = interest.value;
     typeData = interest_;
   }
+  const rate_ = rateData / 12;
+  const term_ = termData * 12;
   if (typeData === "repayment") {
-    monthlyPayment =
-      (amountData * rateData) / (1 - Math.pow(1 + rateData, -termData));
-    totalRepayment = monthlyPayment * termData;
+    monthlyPayment = (
+      (amountData * (rate_ * Math.pow(1 + rate_, term_))) /
+      (Math.pow(1 + rate_, term_) - 1)
+    ).toFixed(2);
+    totalRepayment = (monthlyPayment * term_).toFixed(2);
   } else if ((typeData = "interest")) {
-    monthlyPayment = (amountData * rate.value) / 12;
-    totalRepayment = monthlyPayment * team.value * 12;
+    monthlyPayment = (
+      (amountData * (rate_ * Math.pow(1 + rate_, term_))) /
+      (Math.pow(1 + rate_, term_) - 1)
+    ).toFixed(2);
+    const totalRepayment_ = (monthlyPayment * term_).toFixed(2);
+    totalRepayment = (totalRepayment_ - amountData).toFixed(2);
   }
   if (monthlyPayment && totalRepayment) {
     defaultRightSide.style.display = "none";
     resultRightSide.style.display = "flex";
-    repayParagraph.textContent = Math.floor(totalRepayment);
+    repayParagraph.textContent = totalRepayment;
     repaymentParagraph.textContent = Math.floor(monthlyPayment);
   }
 };
@@ -111,6 +119,7 @@ submit.addEventListener("click", (e) => {
   }
 });
 
-clear.addEventListener("click", clearAll, (e) => {
+clear.addEventListener("click", (e) => {
   e.preventDefault();
+  clearAll();
 });
